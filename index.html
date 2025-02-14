@@ -21,7 +21,9 @@
     <button onclick="sendMessage()">送信</button>
 
     <script>
-        const peer = new Peer();
+        const roomName = prompt("設定するIDを入力してください:");
+        var utf8_RoomName = unescape(encodeURIComponent(roomName));
+        const peer = new Peer(utf8_RoomName); // 合言葉をそのままPeer IDとして使う
         let conn;
 
         peer.on('open', id => {
